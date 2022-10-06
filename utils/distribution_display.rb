@@ -22,8 +22,8 @@ class DistributionDisplay
     table = Array.new(y_range + 1) { '' }
     (y_range).times do |row|
       (distribution.keys.max + 1).times do |k|
-        empty = row % 5 == 0 && row > 0 ? "---" : "   "
-        empty = "#{"%02d" % row}|" if k == 0 && row % 5 == 0 && row > 0
+        empty = row % 5 == 0 && row > 0 ? "---".red : "   "
+        empty = "#{"%02d" % row}|".red if k == 0 && row % 5 == 0 && row > 0
         table[row] += empty if distribution[k] < row + 1
 
         cell = k % 2 == 0 ? "   ".bg_blue : "   ".bg_green
@@ -31,7 +31,7 @@ class DistributionDisplay
       end
     end
     (distribution.keys.max + 1).times do |k|
-      table[-1] += "|#{"%02d" % k}"
+      table[-1] += k % 2 == 0 ? "|#{"%02d" % k}".blue : "|#{"%02d" % k}".green
     end
     table.reverse
   end
