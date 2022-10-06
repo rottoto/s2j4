@@ -1,3 +1,4 @@
+
 # frozen_string_literal: true
 
 require_relative '../data/cryptos'
@@ -13,7 +14,7 @@ def perform
   answer(market.select { |_k, v| v == market.values.min })
 
   question "Les devises dont le cours est inférieur à 6000"
-  answer(market.select { |_k, v| v <= 6000 })
+  answer(market.select { |_k, v| v <= 6000 }.keys[0..15].to_s + " ...")
 
   question "La devise la plus chère parmi celles dont le cours est inférieur à 6000"
   answer(market.select { |_k, v| v <= 6000 }.max_by { |_k, v| v })
