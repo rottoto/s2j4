@@ -2,6 +2,7 @@
 
 require_relative '../data/handles'
 require_relative 'qa'
+require_relative '../utils/distribution_display'
 
 def perform
   question "Combien y a-t-il de handles dans cete array ?"
@@ -17,10 +18,10 @@ def perform
   answer HANDLES.select { |h| h[1].between?('A', 'Z') }.size
 
   question "Trier la liste par ordre alphabétique"
-  answer HANDLES.sort_by { |h| h.downcase }[1..10]
+  answer HANDLES.sort_by { |h| h.downcase }[0..10]
 
   question "Trier la liste par la taille des handles"
-  answer HANDLES.sort_by(&:size)[1..10]
+  answer HANDLES.sort_by(&:size)[0..10]
 
   question "Quelle est la position dans l'array de la personne @epenser ?"
   answer HANDLES.index('@epenser')
@@ -33,6 +34,9 @@ def perform
   end
 
   answer distribution.sort.to_h
+
+  DistributionDisplay.new(distribution).display
+
 end
 
 perform

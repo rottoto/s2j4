@@ -13,4 +13,5 @@ end
 def question(text)
   sep
   puts text.magenta
+  gets.chomp
 end
